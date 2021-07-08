@@ -317,7 +317,7 @@ def help_button(update, context):
         if mod_match:
             module = mod_match.group(1)
             text = (
-                "*⚊❮❮❮❮ ｢  Help  for  {}  module 」❯❯❯❯⚊*\n".format(
+                "*｢ Help for {} module 」*\n".format(
                     HELPABLE[module].__mod_name__
                 )
                 + HELPABLE[module].__help__
@@ -381,7 +381,7 @@ def DaisyX_about_callback(update, context):
         query.message.edit_text(
             text=f"*Grup Manager* adalah Bot yang copas penampilan dari Grup Help dan hasil cloning dari beberapa repo manager yang ada, daring sejak 23 april 2020 dan terus diperbarui!"
             f"\n\n*Versi Bot:* _2.0_"
-            f"\n\nTerima kasih kepada *SaitamaRobot*, *DaisyX* dan semua manajer peladen lainnya, semua admin bot, semua *pendukung*, dan semua pengguna yang membantu kami dalam mengelola, *donatur*, dan semua pengguna yang melaporkan kesalahan atau fitur baru kepada kami."
+            f"\n\nTerima kasih kepada *SaitamaRobot*, *Masha*, *Tiana* dan semua manajer peladen lainnya, semua admin bot, semua *pendukung*, dan semua pengguna yang membantu kami dalam mengelola, *donatur*, dan semua pengguna yang melaporkan kesalahan atau fitur baru kepada kami."
             f"\n\nJuga terima kasih kepada *semua grup* yang menggunakan bot kami, kami terus belajar agar tidak copas doang!"
             f"\n💡 [Terms & Conditions](https://telegra.ph/Terms-and-Conditions-06-23)",
             parse_mode=ParseMode.MARKDOWN,
