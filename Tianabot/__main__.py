@@ -368,7 +368,7 @@ def Masha_about_callback(update: Update, context: CallbackContext):
                         InlineKeyboardButton(text="Bantuan untuk bot", callback_data="aboutmanu_tac")
                     ],
                     [
-                        InlineKeyboardButton(text="🔆 Perintah bot", callback_data="aboutmanu_howto")
+                        InlineKeyboardButton(text="🔆 Perintah bot", callback_data="howto_")
                     ],
                     [   
                         InlineKeyboardButton(text="🔙Kembali", callback_data="masha_back")],
@@ -383,7 +383,10 @@ def Masha_about_callback(update: Update, context: CallbackContext):
             timeout=60,
         )
 
-    elif query.data == "aboutmanu_howto":
+@run_async
+def howto_about_callback(update: Update, context: CallbackContext):
+    query = update.callback_query
+    if query.data == "howto_":
         query.message.edit_text(
             text=f"Selamat datang di menu bantuan"
             f"",
@@ -403,108 +406,10 @@ def Masha_about_callback(update: Update, context: CallbackContext):
                         InlineKeyboardButton(text="➕Bantuan Lengkap➕",callback_data="help_back"),
                     ],
                     [   
-                        InlineKeyboardButton(text="🔙Kembali", callback_data="masha_back")],
+                        InlineKeyboardButton(text="🔙Kembali", callback_data="masha_")],
                 ]
             ),
         )
-    elif query.data == "aboutmanu_helpgrup":
-        query.message.edit_text(
-            text=f"*Pengaturan Grup*"
-            f"\n\n_Pilih salah satu pengaturan yang ingin anda ubah._",
-            parse_mode=ParseMode.MARKDOWN,
-            disable_web_page_preview=True,
-            reply_markup=InlineKeyboardMarkup(
-                [
-                    [
-                        InlineKeyboardButton(text="Mute 🔇", callback_data="aboutmanu_mute"),
-                        InlineKeyboardButton(text="Blok 🚫", callback_data="aboutmanu_blok"),
-                    ],
-                    [
-                        InlineKeyboardButton(text="Tag 📢", callback_data="aboutmanu_tag"),
-                        InlineKeyboardButton(text="Filters 💬", callback_data="aboutmanu_filter"),   
-                    ],
-                    [
-                        InlineKeyboardButton(text="Warn ⚠", callback_data="aboutmanu_warn"),
-                        InlineKeyboardButton(text="Bans ⛔️", callback_data="aboutmanu_bans"),
-                    ],
-                    [
-                        InlineKeyboardButton(text="Rules 📜", callback_data="aboutmanu_rules"),
-                        InlineKeyboardButton(text="Admin 🧑🏻‍✈️", callback_data="aboutmanu_admin"),
-                    ],
-                    [
-                        InlineKeyboardButton(text="Notes📝", callback_data="aboutmanu_notes"),
-                        InlineKeyboardButton(text="Blacklist 📓", callback_data="aboutmanu_blacklist"),   
-                    ],
-                    [
-                        InlineKeyboardButton(text="Captcha 🧠", callback_data="aboutmanu_captcha"),
-                        InlineKeyboardButton(text="Welcome ⛩", callback_data="aboutmanu_welcome"),
-                    ],
-                    [
-                        InlineKeyboardButton(text="Anti-Spam 📨", callback_data="aboutmanu_spam"),
-                        InlineKeyboardButton(text="Anti-Flood ⏳", callback_data="aboutmanu_flood"),   
-                    ],
-                    [
-                        InlineKeyboardButton(text="Mode Malam 🌒",callback_data="aboutmanu_modemalam"),
-                    ],
-                    [
-                        InlineKeyboardButton(text="📚All Cmd", callback_data="help_back"),
-                        InlineKeyboardButton(text="🔒Tutup", callback_data="aboutmanu_tutup"),
-                        InlineKeyboardButton(text="▶️Lain-Lain", callback_data="aboutmanu_nextgrup")],
-                ]
-            ),
-        )
-    elif query.data == "aboutmanu_nextgrup":
-        query.message.edit_text(
-            text=f"*Pengaturan Grup*"
-            f"\n\n_Pilih salah satu pengaturan yang ingin anda ubah._",
-            parse_mode=ParseMode.MARKDOWN,
-            disable_web_page_preview=True,
-            reply_markup=InlineKeyboardMarkup(
-                [
-                    [
-                        InlineKeyboardButton(text="Purge🗑", callback_data="aboutmanu_purge"),
-                    ],
-                    [
-                        InlineKeyboardButton(text="Stiker🎭", callback_data="aboutmanu_stiker"),   
-                    ],
-                    [
-                        InlineKeyboardButton(text="Musik🎧", callback_data="aboutmanu_musik"),
-                    ],
-                    [
-                        InlineKeyboardButton(text="Youtube🎬",callback_data="aboutmanu_youtube"),
-                    ],
-                    [
-                        InlineKeyboardButton(text="Koneksi🕹", callback_data="aboutmanu_koneksi"),
-                    ],
-                    [
-                        InlineKeyboardButton(text="Federasi🛂", callback_data="aboutmanu_federasi"),
-                    ],
-                    [
-                        InlineKeyboardButton(text="Pembersih🌀", callback_data="aboutmanu_pembersih"),   
-                    ],
-                    [
-                        InlineKeyboardButton(text="Force-Subs🔔", callback_data="aboutmanu_force"),
-                    ],
-                    [
-                        InlineKeyboardButton(text="◀️Kembali", callback_data="aboutmanu_helpgrup"),
-                        InlineKeyboardButton(text="🔒Tutup", callback_data="aboutmanu_tutup"),
-                        InlineKeyboardButton(text="📚All Cmd", callback_data="help_back")],
-                ]
-            ),
-        )
-    elif query.data == "aboutmanu_credit":
-        query.message.edit_text(
-            text=f"*{dispatcher.bot.first_name} Is the redisigned version of Daisy and Naruto for the best performance.*"
-            f"\n\nBased on [Daisy](https://github.com/inukaasith/daisy) + [Naruto](https://github.com/imjanindu/narutorobot)."
-            f"\n\n{dispatcher.bot.first_name}'s source code was written by InukaASiTH and Imjanindu"
-            f"\n\nIf Any Question About {dispatcher.bot.first_name}, \nLet Us Know At @{SUPPORT_CHAT}.",
-            parse_mode=ParseMode.MARKDOWN,
-            disable_web_page_preview=True,
-            reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="Kembali ke bantuan", callback_data="aboutmanu_tac")]]
-            ),
-        )
-
     elif query.data == "aboutmanu_permis":
         query.message.edit_text(
             text=f"*Perintah Dasar*"
@@ -572,12 +477,13 @@ def Masha_about_callback(update: Update, context: CallbackContext):
         )
     elif query.data == "aboutmanu_tutup":
         query.message.edit_text(
-            text=f"*Menu Ditutup*🔒"
-            f"",
+            text=f"👉🏻 Sekarang kirim pesan dengan permintaan ke [Staf](https://t.me/RosoOwner_bot)."
+            f"\n\n💡 Permintaan harus dikirim dalam satu pesan, pesan lainnya tidak akan terkirim."
+            f"\n\n⚠️ Kami TIDAK memberikan dukungan perihal pemblokiran, pembisuan atau hal-hal lain yang terkait dengan grup yang dikelola oleh bot ini: untuk permintaan semacam ini hubungi secara langsung administrator grup.",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="Buka", callback_data="aboutmanu_helpgrup")]]
+                [[InlineKeyboardButton(text="Batalkan", callback_data="help_back")]]
             ),
         )
 
@@ -618,7 +524,7 @@ def get_help(update: Update, context: CallbackContext):
                             )
                         ],
                         [   
-                            InlineKeyboardButton(text="👥 Buka Disini",callback_data="masha_")],   
+                            InlineKeyboardButton(text="👥 Buka Disini",callback_data="help_back")],   
                     ]
                 ),
             )
@@ -877,6 +783,7 @@ def main():
     settings_callback_handler = CallbackQueryHandler(settings_button, pattern=r"stngs_")
 
     about_callback_handler = CallbackQueryHandler(Masha_about_callback, pattern=r"masha_")
+    howto_callback_handler = CallbackQueryHandler(howto_about_callback, pattern=r"howto_")
 
     donate_handler = CommandHandler("donate", donate)
     migrate_handler = MessageHandler(Filters.status_update.migrate, migrate_chats)
@@ -885,6 +792,7 @@ def main():
     dispatcher.add_handler(start_handler)
     dispatcher.add_handler(help_handler)
     dispatcher.add_handler(about_callback_handler)
+    dispatcher.add_handler(howto_callback_handler)
     dispatcher.add_handler(settings_handler)
     dispatcher.add_handler(help_callback_handler)
     dispatcher.add_handler(settings_callback_handler)
