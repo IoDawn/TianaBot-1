@@ -74,58 +74,40 @@ def get_readable_time(seconds: int) -> str:
 
 
 
-PM_START_TEXT = """Hello, My name is ༒ 𝙏𝙄𝘼𝙉𝘼 ༒
-
-Hey , I am a Group Manager,
-Made specially for Managing Groups.
-
-This Pro bot was made by [ℙℝ𝕀ℕℂ𝔼](@prince_3011)
-Click /help or use button below to find out more about how to use me to my full potential."""
+PM_START_TEXT = """
+Hai yang disana! 
+[Grup Manajer](https://t.me/GrupManajerBot) adalah Bot *yang paling lengkap* dan *gratis* untuk membantumu *mengelola* grup anda dengan lebih mudah dan *aman*! 
+ 
+👉🏻 *Tambahkan saya ke Supergrup* dan atur saya sebagai Admin agar saya dapat bertindak!
+ 
+❓ *APA PERINTAHNYA?* ❓
+Tekan /help untuk *melihat semua perintah* dan bagaimana mereka bekerja! 
+"""
 
 buttons = [
-    [
-        InlineKeyboardButton(
-            text="➕️ 𝐀𝐃𝐃 ༒ 𝙏𝙄𝘼𝙉𝘼 ༒ 𝐓𝐎 𝐘𝐎𝐔𝐑 𝐆𝐑𝐎𝐔𝐏 ➕️", url="t.me/Tiana_Prince_bot?startgroup=true"),
+    [   InlineKeyboardButton(text="➕ Tambahkan ke grup ➕", url="t.me/GrupManajerBot?startgroup=start"),
+    ],
+    [   InlineKeyboardButton(text="👥 Grup", url="https://t.me/nothingspecialonhere/10"),
+        InlineKeyboardButton(text="Channel 📢", url="https://t.me/nothingspecialonhere/10"),
     ],
     [
-        InlineKeyboardButton(text="📱𝐈𝐍𝐅𝐎", callback_data="masha_"),
-        InlineKeyboardButton(text="⚜️𝐇𝐄𝐋𝐏", callback_data="help_back"),
+        InlineKeyboardButton(text="🔧 Bantuan",callback_data="help_back"),
+        InlineKeyboardButton(text="Informasi 💬",callback_data="aboutmanu_"),   
     ],
-   [
-        InlineKeyboardButton(
-            text="🎵 𝐌𝐔𝐒𝐈𝐂 𝐆𝐑𝐎𝐔𝐏 🎧", url="http://t.me/MUSIC_AND_CHATS")
-   ],
-   [
-        InlineKeyboardButton(
-            text="✨ 𝐌𝐘 𝐁𝐅 ✨", url="http://t.me/joey_prince_bot"),
-        InlineKeyboardButton(
-            text="⚜️ 𝐂𝐇𝐀𝐍𝐍𝐄𝐋 ⚜️", url="https://t.me/PRINCEBOTS"),
+    [    
+        InlineKeyboardButton(text="🇮🇩 Bahasa 🇮🇩",callback_data="help_back"
+        ),
     ],
-    [  
-        InlineKeyboardButton(text="👥 𝐒𝐔𝐏𝐏𝐎𝐑𝐓 𝐆𝐑𝐎𝐔𝐏 👥", url="https://t.me/PRINCEBOTSUPPORT"),
-    ], 
-    
 ]
 
-TIANA_IMG = "https://telegra.ph/file/5033de333ba8a70a216ad.mp4"
+HELP_STRINGS = f"""
+*PENGATURAN GRUP*
 
-HELP_STRINGS = """
-Hey There! My Name is 𝙏𝙄𝘼𝙉𝘼.
-
-I'm a Heroine For Fun and help admins to manage their groups! Have a look at the following for an idea of some of the things I can help you with.
-
-• Main commands available:
- • /help: PM's you this message.
- • /help <module name>: PM's you info about that module.
- • /donate: information on how to donate!
- • /settings:
-   • in PM: will send you your settings for all supported modules.
-   • in a group: will redirect you to pm, with all that chat's settings.
-
-All commands can either be used with / or !.
-
-And the following:
-"""
+_Pilih salah satu pengaturan yang ingin anda ubah._
+""".format(
+    dispatcher.bot.first_name,
+    "" if not ALLOW_EXCL else "\nAll commands can either be used with / or !.\n",
+)
 
 
 DONATE_STRING ="""No need.. I'm rich"""
@@ -237,8 +219,8 @@ def start(update: Update, context: CallbackContext):
                 timeout=60,
             )
     else:
-          update.effective_message.reply_video(
-                TIANA_IMG, caption= "I'm awake already!\n<b>Haven't slept since:</b> <code>{}</code>".format(
+        update.effective_message.reply_text(
+            "I'm awake already!\n<b>Haven't slept since:</b> <code>{}</code>".format(
                 uptime
             ),
             parse_mode=ParseMode.HTML,
@@ -373,61 +355,232 @@ def Masha_about_callback(update: Update, context: CallbackContext):
     query = update.callback_query
     if query.data == "masha_":
         query.message.edit_text(
-            text=""" ℹ️ I'm *TIANA*, a powerful group management bot built to help you manage your group easily.
-                 ❍ I can restrict users.
-                 ❍ I can greet users with customizable welcome messages and even set a group's rules.
-                 ❍ I have an advanced anti-flood system.
-                 ❍ I can warn users until they reach max warns, with each predefined actions such as ban, mute, kick, etc.
-                 ❍ I have a note keeping system, blacklists, and even predetermined replies on certain keywords.
-                 ❍ I check for admins' permissions before executing any command and more stuffs
-                 \n_Masha's licensed under the GNU General Public License v3.0_
-                 Here is the [💾Repository](https://github.com/prince301102/tiana-2.0).
-                 If you have any question about masha, let us know at @princebotsupport.""",
+            text=f"*Grup Manager* adalah Bot yang copas penampilan dari Grup Help dan hasil cloning dari beberapa repo manager yang ada, daring sejak 23 april 2020 dan terus diperbarui!"
+            f"\n\n*Versi Bot:* _2.0_"
+            f"\n\nTerima kasih kepada *SaitamaRobot*, *Masha* dan semua manajer peladen lainnya, semua admin bot, semua *pendukung*, dan semua pengguna yang membantu kami dalam mengelola, *donatur*, dan semua pengguna yang melaporkan kesalahan atau fitur baru kepada kami."
+            f"\n\nJuga terima kasih kepada *semua grup* yang menggunakan bot kami, kami terus belajar agar tidak copas doang!"
+            f"\n💡 [Terms & Conditions](https://telegra.ph/Terms-and-Conditions-06-23)",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
-                 [
-                    InlineKeyboardButton(text="Back", callback_data="masha_back")
-                 ]
+                    [
+                        InlineKeyboardButton(text="Bantuan untuk bot", callback_data="aboutmanu_tac")
+                    ],
+                    [
+                        InlineKeyboardButton(text="🔆 Perintah bot", callback_data="aboutmanu_howto")
+                    ],
+                    [   
+                        InlineKeyboardButton(text="🔙Kembali", callback_data="masha_back")],
                 ]
             ),
         )
     elif query.data == "masha_back":
         query.message.edit_text(
-                PM_START_TEXT,
-                reply_markup=InlineKeyboardMarkup(buttons),
-                parse_mode=ParseMode.MARKDOWN,
-                timeout=60,
-                disable_web_page_preview=False,
+            PM_START_TEXT,
+            reply_markup=InlineKeyboardMarkup(buttons),
+            parse_mode=ParseMode.MARKDOWN,
+            timeout=60,
         )
 
-
-@run_async
-def Source_about_callback(update: Update, context: CallbackContext):
-    query = update.callback_query
-    if query.data == "source_":
+    elif query.data == "aboutmanu_howto":
         query.message.edit_text(
-            text=""" Hi..🤗 I'm *TIANA BOT*
-                 \nHere is the [Source Code](https://GitHub.com/prince301102/tiana-2.0) .""",
+            text=f"Selamat datang di menu bantuan"
+            f"",
             parse_mode=ParseMode.MARKDOWN,
-            disable_web_page_preview=False,
+            disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
-                 [
-                    InlineKeyboardButton(text="Go Back", callback_data="source_back")
-                 ]
+                    [
+                        InlineKeyboardButton(text="💁🏻‍♂Perintah dasar", callback_data="aboutmanu_permis"),
+                        InlineKeyboardButton(text="🙋🏻‍♂Lanjutan", callback_data="aboutmanu_spamprot"),
+                    ],
+                    [
+                        InlineKeyboardButton(text="🕵🏻Ahli", callback_data="aboutmanu_expert"),
+                        InlineKeyboardButton(text="💆🏻‍♂Panduan Pro", callback_data="aboutmanu_guide"),   
+                    ],
+                    [
+                        InlineKeyboardButton(text="➕Bantuan Lengkap➕",callback_data="help_back"),
+                    ],
+                    [   
+                        InlineKeyboardButton(text="🔙Kembali", callback_data="masha_back")],
                 ]
             ),
         )
-    elif query.data == "source_back":
+    elif query.data == "aboutmanu_helpgrup":
         query.message.edit_text(
-                PM_START_TEXT,
-                reply_markup=InlineKeyboardMarkup(buttons),
-                parse_mode=ParseMode.MARKDOWN,
-                timeout=60,
-                disable_web_page_preview=False,
+            text=f"*Pengaturan Grup*"
+            f"\n\n_Pilih salah satu pengaturan yang ingin anda ubah._",
+            parse_mode=ParseMode.MARKDOWN,
+            disable_web_page_preview=True,
+            reply_markup=InlineKeyboardMarkup(
+                [
+                    [
+                        InlineKeyboardButton(text="Mute 🔇", callback_data="aboutmanu_mute"),
+                        InlineKeyboardButton(text="Blok 🚫", callback_data="aboutmanu_blok"),
+                    ],
+                    [
+                        InlineKeyboardButton(text="Tag 📢", callback_data="aboutmanu_tag"),
+                        InlineKeyboardButton(text="Filters 💬", callback_data="aboutmanu_filter"),   
+                    ],
+                    [
+                        InlineKeyboardButton(text="Warn ⚠", callback_data="aboutmanu_warn"),
+                        InlineKeyboardButton(text="Bans ⛔️", callback_data="aboutmanu_bans"),
+                    ],
+                    [
+                        InlineKeyboardButton(text="Rules 📜", callback_data="aboutmanu_rules"),
+                        InlineKeyboardButton(text="Admin 🧑🏻‍✈️", callback_data="aboutmanu_admin"),
+                    ],
+                    [
+                        InlineKeyboardButton(text="Notes📝", callback_data="aboutmanu_notes"),
+                        InlineKeyboardButton(text="Blacklist 📓", callback_data="aboutmanu_blacklist"),   
+                    ],
+                    [
+                        InlineKeyboardButton(text="Captcha 🧠", callback_data="aboutmanu_captcha"),
+                        InlineKeyboardButton(text="Welcome ⛩", callback_data="aboutmanu_welcome"),
+                    ],
+                    [
+                        InlineKeyboardButton(text="Anti-Spam 📨", callback_data="aboutmanu_spam"),
+                        InlineKeyboardButton(text="Anti-Flood ⏳", callback_data="aboutmanu_flood"),   
+                    ],
+                    [
+                        InlineKeyboardButton(text="Mode Malam 🌒",callback_data="aboutmanu_modemalam"),
+                    ],
+                    [
+                        InlineKeyboardButton(text="📚All Cmd", callback_data="help_back"),
+                        InlineKeyboardButton(text="🔒Tutup", callback_data="aboutmanu_tutup"),
+                        InlineKeyboardButton(text="▶️Lain-Lain", callback_data="aboutmanu_nextgrup")],
+                ]
+            ),
         )
+    elif query.data == "aboutmanu_nextgrup":
+        query.message.edit_text(
+            text=f"*Pengaturan Grup*"
+            f"\n\n_Pilih salah satu pengaturan yang ingin anda ubah._",
+            parse_mode=ParseMode.MARKDOWN,
+            disable_web_page_preview=True,
+            reply_markup=InlineKeyboardMarkup(
+                [
+                    [
+                        InlineKeyboardButton(text="Purge🗑", callback_data="aboutmanu_purge"),
+                    ],
+                    [
+                        InlineKeyboardButton(text="Stiker🎭", callback_data="aboutmanu_stiker"),   
+                    ],
+                    [
+                        InlineKeyboardButton(text="Musik🎧", callback_data="aboutmanu_musik"),
+                    ],
+                    [
+                        InlineKeyboardButton(text="Youtube🎬",callback_data="aboutmanu_youtube"),
+                    ],
+                    [
+                        InlineKeyboardButton(text="Koneksi🕹", callback_data="aboutmanu_koneksi"),
+                    ],
+                    [
+                        InlineKeyboardButton(text="Federasi🛂", callback_data="aboutmanu_federasi"),
+                    ],
+                    [
+                        InlineKeyboardButton(text="Pembersih🌀", callback_data="aboutmanu_pembersih"),   
+                    ],
+                    [
+                        InlineKeyboardButton(text="Force-Subs🔔", callback_data="aboutmanu_force"),
+                    ],
+                    [
+                        InlineKeyboardButton(text="◀️Kembali", callback_data="aboutmanu_helpgrup"),
+                        InlineKeyboardButton(text="🔒Tutup", callback_data="aboutmanu_tutup"),
+                        InlineKeyboardButton(text="📚All Cmd", callback_data="help_back")],
+                ]
+            ),
+        )
+    elif query.data == "aboutmanu_credit":
+        query.message.edit_text(
+            text=f"*{dispatcher.bot.first_name} Is the redisigned version of Daisy and Naruto for the best performance.*"
+            f"\n\nBased on [Daisy](https://github.com/inukaasith/daisy) + [Naruto](https://github.com/imjanindu/narutorobot)."
+            f"\n\n{dispatcher.bot.first_name}'s source code was written by InukaASiTH and Imjanindu"
+            f"\n\nIf Any Question About {dispatcher.bot.first_name}, \nLet Us Know At @{SUPPORT_CHAT}.",
+            parse_mode=ParseMode.MARKDOWN,
+            disable_web_page_preview=True,
+            reply_markup=InlineKeyboardMarkup(
+                [[InlineKeyboardButton(text="Kembali ke bantuan", callback_data="aboutmanu_tac")]]
+            ),
+        )
+
+    elif query.data == "aboutmanu_permis":
+        query.message.edit_text(
+            text=f"*Perintah Dasar*"
+            f"\n\n👮🏻Tersedia untuk Admin"
+            f"\n🕵🏻Tersedia untuk Semua Anggota"
+            f"\n\n👮🏻 `/admincache` memperbarui daftar Admin dan hak istimewanya"
+            f"\n\n🕵🏻  `/help` anda dapat melihat atau mengelola semua pengaturan Bot di pm"
+            f"\n\n👮🏻  `/ban` anda dapat memblokir pengguna dari grup tanpa memberinya kemungkinan untuk bergabung kembali menggunakan tautan grup"
+            f"\n\n👮🏻  `/mute` menempatkan pengguna dalam mode hanya-membaca. Dia bisa membaca tetapi tidak bisa mengirim pesan apapun"
+            f"\n\n👮🏻  `/kick` menendang pengguna dari grup, memberinya kemungkinan untuk bergabung kembali menggunakan tautan grup"
+            f"\n\n👮🏻  `/unban` menghapus blokiran pengguna dari grup dalam daftar blokiran, memberinya kemungkinan untuk bergabung kembali dengan tautan grup"
+            f"\n\n👮🏻  `/info` memberikan informasi tentang pengguna"
+            f"\n👮🏻  `/whois` mirip dengan `/info` tetapi lebih simpel"
+            f"\n\n◽️ `/admins` memberikan Daftar lengkap admin grup",
+            parse_mode=ParseMode.MARKDOWN,
+            reply_markup=InlineKeyboardMarkup(
+                [[InlineKeyboardButton(text="Kembali ke bantuan", callback_data="aboutmanu_howto")]]
+            ),
+        )
+    elif query.data == "aboutmanu_spamprot":
+        query.message.edit_text(
+            text="*Perintah Lanjutan*"
+            "\n\n🔘Tersedia untuk Admin"
+            "\n\n*MANAJEMEN PERINGATAN*"
+            "\n👮🏻  `/warn` memberikan peringatan ke pengguna"
+            "\n👮🏻  `/resetwarn` balas ke pengguna untuk menghapus warn"
+            "\n👮🏻  `/warns` memungkinkan anda melihat dan mengelola peringatan pengguna"
+            "\n👮🏻  `/addwarn [kata kunci]` balas ke pesan untuk mengatur filter peringatan pada kata kunci tertentu."
+            "\n\n🛃 `/del` menghapus pesan yang dipilih"
+            "\n🛃 `/purge` menghapus antara pesan yang dipilih sampai pesan saat ini"
+            "\n\n◽️  `/reports [on/off]` mengubah pengaturan laporan, atau melihat status saat ini."
+            "\n\n👮🏻 `/antispam [on/off]` Mengatur keamanan antispam di grup. Ini akan membantu melindungi Anda dan grup Anda dengan menghapus pembanjir spam secepat mungkin",
+            parse_mode=ParseMode.MARKDOWN,
+            reply_markup=InlineKeyboardMarkup(
+                [[InlineKeyboardButton(text="Kembali ke bantuan", callback_data="aboutmanu_howto")]]
+            ),
+        )  
+    elif query.data == "aboutmanu_expert":
+        query.message.edit_text(
+            text=f"*Perintah Dasar*"
+            f"\n\n👮🏻Tersedia untuk Admin"
+            f"\n🕵🏻Tersedia untuk Semua Anggota"
+            f"\n\n👮🏻 `/admincache` memperbarui daftar Admin dan hak istimewanya"
+            f"\n<Code>You must be this chat administrator to perform this action!</code>"
+            f"\nThis has nothing to do with {dispatcher.bot.first_name}'s rights; this is all about YOUR permissions as an admin. {dispatcher.bot.first_name} respects admin permissions; if you do not have the Ban Users permission as a telegram admin, you won't be able to ban users with {dispatcher.bot.first_name}. Similarly, to change {dispatcher.bot.first_name} settings, you need to have the Change group info permission."
+            f"\n\nThe message very clearly says that you need these rights - <i>not {dispatcher.bot.first_name}.</i>",
+            parse_mode=ParseMode.MARKDOWN,
+            reply_markup=InlineKeyboardMarkup(
+                [[InlineKeyboardButton(text="Back", callback_data="aboutmanu_howto")]]
+            ),
+        )
+    elif query.data == "aboutmanu_guide":
+        query.message.edit_text(
+            text=f"*Perintah Dasar*"
+            f"\n\n👮🏻Tersedia untuk Admin"
+            f"\n🕵🏻Tersedia untuk Semua Anggota"
+            f"\n\nIf you are getting a message saying:"
+            f"\n<Code>You must be this chat administrator to perform this action!</code>"
+            f"\nThis has nothing to do with {dispatcher.bot.first_name}'s rights; this is all about YOUR permissions as an admin. {dispatcher.bot.first_name} respects admin permissions; if you do not have the Ban Users permission as a telegram admin, you won't be able to ban users with {dispatcher.bot.first_name}. Similarly, to change {dispatcher.bot.first_name} settings, you need to have the Change group info permission."
+            f"\n\nThe message very clearly says that you need these rights - <i>not {dispatcher.bot.first_name}.</i>",
+            parse_mode=ParseMode.MARKDOWN,
+            reply_markup=InlineKeyboardMarkup(
+                [[InlineKeyboardButton(text="Back", callback_data="aboutmanu_howto")]]
+            ),
+        )
+    elif query.data == "aboutmanu_tutup":
+        query.message.edit_text(
+            text=f"*Menu Ditutup*🔒"
+            f"",
+            parse_mode=ParseMode.MARKDOWN,
+            disable_web_page_preview=True,
+            reply_markup=InlineKeyboardMarkup(
+                [[InlineKeyboardButton(text="Buka", callback_data="aboutmanu_helpgrup")]]
+            ),
+        )
+
 
 @run_async
 def get_help(update: Update, context: CallbackContext):
@@ -457,16 +610,18 @@ def get_help(update: Update, context: CallbackContext):
         update.effective_message.reply_text(
             "Contact me in PM to get the list of possible commands.",
             reply_markup=InlineKeyboardMarkup(
-                [
                     [
-                        InlineKeyboardButton(
-                            text="Help",
-                            url="t.me/{}?start=help".format(context.bot.username),
-                        )
+                        [
+                            InlineKeyboardButton(
+                                text="👤 Buka di pesan pribadi",
+                                url="t.me/{}?start=help".format(context.bot.username),
+                            )
+                        ],
+                        [   
+                            InlineKeyboardButton(text="👥 Buka Disini",callback_data="aboutmanu_helpgrup")],   
                     ]
-                ]
-            ),
-        )
+                ),
+            )
         return
 
     elif len(args) >= 2 and any(args[1].lower() == x for x in HELPABLE):
@@ -731,7 +886,6 @@ def main():
     dispatcher.add_handler(start_handler)
     dispatcher.add_handler(help_handler)
     dispatcher.add_handler(about_callback_handler)
-    dispatcher.add_handler(source_callback_handler)
     dispatcher.add_handler(settings_handler)
     dispatcher.add_handler(help_callback_handler)
     dispatcher.add_handler(settings_callback_handler)
