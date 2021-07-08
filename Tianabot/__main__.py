@@ -365,7 +365,7 @@ def Masha_about_callback(update: Update, context: CallbackContext):
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton(text="Bantuan untuk bot", callback_data="aboutmanu_tac")
+                        InlineKeyboardButton(text="Bantuan untuk bot", callback_data="bantu_")
                     ],
                     [
                         InlineKeyboardButton(text="🔆 Perintah bot", callback_data="howto_")
@@ -381,6 +381,7 @@ def Masha_about_callback(update: Update, context: CallbackContext):
             reply_markup=InlineKeyboardMarkup(buttons),
             parse_mode=ParseMode.MARKDOWN,
             timeout=60,
+            disable_web_page_preview=True,
         )
 
 @run_async
@@ -475,16 +476,29 @@ def howto_about_callback(update: Update, context: CallbackContext):
                 [[InlineKeyboardButton(text="Back", callback_data="aboutmanu_howto")]]
             ),
         )
-    elif query.data == "aboutmanu_tutup":
+
+
+@run_async
+def bantu_about_callback(update: Update, context: CallbackContext):
+    query = update.callback_query
+    if query.data == "bantu_":
         query.message.edit_text(
             text=f"👉🏻 Sekarang kirim pesan dengan permintaan ke [Staf](https://t.me/RosoOwner_bot)."
-            f"\n\n💡 Permintaan harus dikirim dalam satu pesan, pesan lainnya tidak akan terkirim."
-            f"\n\n⚠️ Kami TIDAK memberikan dukungan perihal pemblokiran, pembisuan atau hal-hal lain yang terkait dengan grup yang dikelola oleh bot ini: untuk permintaan semacam ini hubungi secara langsung administrator grup.",
+            f"\n\n💡 Permintaan harus dikirim *dalam satu pesan*, pesan lainnya tidak akan terkirim."
+            f"\n\n⚠️ Kami TIDAK memberikan dukungan perihal pemblokiran, *pembisuan atau hal-hal lain yang terkait dengan grup* yang dikelola oleh bot ini: untuk permintaan semacam ini hubungi secara langsung administrator grup.",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="Batalkan", callback_data="help_back")]]
+                [[InlineKeyboardButton(text="❌ Batalkan", callback_data="bantu_back")]]
             ),
+        )
+    elif query.data == "bantu_back":
+        query.message.edit_text(
+            PM_START_TEXT,
+            reply_markup=InlineKeyboardMarkup(buttons),
+            parse_mode=ParseMode.MARKDOWN,
+            timeout=60,
+            disable_web_page_preview=True,
         )
 
 
