@@ -95,7 +95,7 @@ buttons = [
         InlineKeyboardButton(text="Informasi 💬",callback_data="masha_"),   
     ],
     [    
-        InlineKeyboardButton(text="📚 Plugins 📚",callback_data="help_back"
+        InlineKeyboardButton(text="🛠 Plugins 🛠",callback_data="help_back"
         ),
     ],
 ]
@@ -309,7 +309,7 @@ def help_button(update, context):
                 parse_mode=ParseMode.MARKDOWN,
                 disable_web_page_preview=True,
                 reply_markup=InlineKeyboardMarkup(
-                    [[InlineKeyboardButton(text="「 GO BACK 」", callback_data="help_back")]]
+                    [[InlineKeyboardButton(text="「 Kembali 」", callback_data="help_back")]]
                 ),
             )
 
@@ -357,7 +357,7 @@ def Masha_about_callback(update: Update, context: CallbackContext):
         query.message.edit_text(
             text=f"*Grup Manager* adalah Bot yang copas penampilan dari Grup Help dan hasil cloning dari beberapa repo manager yang ada, daring sejak 23 april 2020 dan terus diperbarui!"
             f"\n\n*Versi Bot:* _2.0_"
-            f"\n\nTerima kasih kepada *SaitamaRobot*, *Masha* dan semua manajer peladen lainnya, semua admin bot, semua *pendukung*, dan semua pengguna yang membantu kami dalam mengelola, *donatur*, dan semua pengguna yang melaporkan kesalahan atau fitur baru kepada kami."
+            f"\n\nTerima kasih kepada *SaitamaRobot*, *MashaRobot* dan semua manajer peladen lainnya, semua admin bot, semua *pendukung*, dan semua pengguna yang membantu kami dalam mengelola, *donatur*, dan semua pengguna yang melaporkan kesalahan atau fitur baru kepada kami."
             f"\n\nJuga terima kasih kepada *semua grup* yang menggunakan bot kami, kami terus belajar agar tidak copas doang!"
             f"\n💡 [Terms & Conditions](https://telegra.ph/Terms-and-Conditions-06-23)",
             parse_mode=ParseMode.MARKDOWN,
