@@ -92,10 +92,10 @@ buttons = [
     ],
     [
         InlineKeyboardButton(text="🔧 Bantuan",callback_data="help_back"),
-        InlineKeyboardButton(text="Informasi 💬",callback_data="aboutmanu_"),   
+        InlineKeyboardButton(text="Informasi 💬",callback_data="masha_"),   
     ],
     [    
-        InlineKeyboardButton(text="🇮🇩 Bahasa 🇮🇩",callback_data="help_back"
+        InlineKeyboardButton(text="📚 Plugins 📚",callback_data="help_back"
         ),
     ],
 ]
@@ -618,7 +618,7 @@ def get_help(update: Update, context: CallbackContext):
                             )
                         ],
                         [   
-                            InlineKeyboardButton(text="👥 Buka Disini",callback_data="aboutmanu_helpgrup")],   
+                            InlineKeyboardButton(text="👥 Buka Disini",callback_data="helpgrup_")],   
                     ]
                 ),
             )
