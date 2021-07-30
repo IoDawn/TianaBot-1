@@ -548,7 +548,7 @@ __help__ = """
  - /lined <text>: lined your text!
  - /bi <text>: Bold + Italic text!
 """
-__mod_name__ = "STYLETEXT"
+__mod_name__ = "Font"
 
 WEEBIFY_HANDLER = DisableAbleCommandHandler("weebify", weebify)
 BUBBLE_HANDLER = DisableAbleCommandHandler("bubble", bubble)
